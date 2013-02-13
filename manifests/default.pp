@@ -39,5 +39,27 @@ class mongodb {
 	Exec['apt-key add mongodb'] -> File['/etc/apt/sources.list.d/10gen.list'] -> Exec['apt-get update'] -> Package['mongodb-10gen']
 }
 
+class bcrypt {
+	package { 'make':
+		ensure => present,
+	}
+
+	package { 'openssl':
+		ensure => present,
+	}
+}
+
+class images {
+	package { 'imagemagick':
+		ensure => present,
+	}
+
+	package { 'ghostscript':
+		ensure => present,
+	}
+}
+
 include nodejs
 include mongodb
+include bcrypt
+include images
