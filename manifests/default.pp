@@ -18,6 +18,11 @@ class nodejs {
 		ensure => present,
 		require => Exec['add-apt-repository ppa:chris-lea/node.js'],
 	}
+
+	package { 'npm':
+		ensure => present,
+		require => Exec['add-apt-repository ppa:chris-lea/node.js'],
+	}
 }
 
 class mongodb {
@@ -41,6 +46,10 @@ class mongodb {
 
 class bcrypt {
 	package { 'make':
+		ensure => present,
+	}
+
+	package { 'g++':
 		ensure => present,
 	}
 
