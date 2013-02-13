@@ -9,6 +9,11 @@ Vagrant::Config.run do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise32"
 
+  config.vm.customize [
+    "setextradata", :id,
+    "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"
+  ]
+
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"
