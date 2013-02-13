@@ -1,8 +1,9 @@
 # Simple Vagrant files for e-registrations
 
 For now, it:
-* provisions NodeJS
-* provisions MongoDB
+* provisions NodeJS, MongoDB
+* provisions dependencies for building E-Registration: make, g++, openssl, npm
+* provisions dependencies for running E-Registration: ImageMagick, Ghostscript
 
 ## Usage
 
