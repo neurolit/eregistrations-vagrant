@@ -59,7 +59,7 @@ class bcrypt {
 }
 
 class images {
-	package { 'imagemagick':
+	package { 'graphicsmagick':
 		ensure => present,
 	}
 
