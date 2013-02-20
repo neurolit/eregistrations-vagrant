@@ -1,9 +1,9 @@
-# Simple Vagrant files for e-registrations
+# Simple Vagrant files for eRegistrations
 
 For now, it:
 * provisions NodeJS, MongoDB
-* provisions dependencies for building E-Registrations: make, g++, openssl, npm
-* provisions dependencies for running E-Registrations: ImageMagick, Ghostscript
+* provisions dependencies for building eRegistrations: make, g++, openssl, npm
+* provisions dependencies for running eRegistrations: ImageMagick, Ghostscript
 * configures the Box (network + symbolic links allowed)
 
 ## Usage
@@ -12,36 +12,68 @@ In order to use these files, you'll need to [install Virtual Box and Vagrant](ht
 
 After that, download this repository (it will create a mbox directory) :
 
-	$ git clone git://github.com/neurolit/eregistrations-vagrant.git mybox
+```shell
+$ git clone git://github.com/neurolit/eregistrations-vagrant.git mybox
+```
 
 Then, you can create a box and provision it:
 
-	$ cd mybox/
-	$ vagrant box add precise32 http://files.vagrantup.com/precise32.box
-	$ vagrant init precise32
-	$ vagrant up
+```shell
+$ cd mybox/
+$ vagrant box add precise32 http://files.vagrantup.com/precise32.box
+$ vagrant init precise32
+$ vagrant up
+```
 
 Your box is running!
 
-## Installation of e-registrations
+## Installation of eRegistrations
 
-* Download e-registrations code and put it into mybox directory.
+* Download eRegistrations code and put it into mybox directory.
 
-	$ cd mybox/
-	$ git clone git://github.com/egovernment/eregistrations.git
+```shell
+$ cd mybox/
+$ git clone git://github.com/egovernment/eregistrations.git
+```
 
-* Create the env.json file according to e-registrations README file.
+* Create the env.json file according to eRegistrations README file.
 
-	$ cd mybox/eregistrations
-	$ vi env.json
+```
+$ cd mybox/eregistrations
+$ touch env.json
+```
 
-* Connect to your virtual box, and follow the e-registrations README:
+Here is an example, which should work out-of-the-box:
 
-	$ cd mybox/
-	$ vagrant ssh
-	$ cd /vagrant/eregistrations
-	$ npm rebuild
+```json
+{
+	"dev": true,
+	"url": "http://192.168.33.10",
+	"port": 3177,
+	"db": {
+		"name": "eregistrations",
+		"host": "localhost",
+		"port": 27017,
+		"collection": "eregistrations"
+	}
+}
+```
+
+* Connect to your virtual box, and follow the eRegistrations README:
+
+```shell
+$ cd mybox/
+$ vagrant ssh
+$ cd /vagrant/eregistrations
+$ npm rebuild
 	...
+```
+
+## Running it
+
+$ npm start
+
+With your browser, connect to http://192.168.33.10:3177
 
 ## Notes
 
