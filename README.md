@@ -40,7 +40,6 @@ $ git clone git://github.com/egovernment/eregistrations.git
 
 ```
 $ cd mybox/eregistrations
-$ touch env.json
 ```
 
 Here is an example, which should work out-of-the-box:
