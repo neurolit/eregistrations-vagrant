@@ -5,8 +5,8 @@ class nodejs {
 		require => Exec['apt-get update'],
 	}
 
-	exec { 'add-apt-repository ppa:chris-lea/node.js':
-		command => '/usr/bin/add-apt-repository ppa:chris-lea/node.js && /usr/bin/apt-get update',
+	exec { 'add-apt-repository ppa:chris-lea/node.js-legacy':
+		command => '/usr/bin/add-apt-repository ppa:chris-lea/node.js-legacy && /usr/bin/apt-get update',
 		require => Package['python-software-properties'],
 	}
 
@@ -16,12 +16,12 @@ class nodejs {
 
 	package { 'nodejs':
 		ensure => present,
-		require => Exec['add-apt-repository ppa:chris-lea/node.js'],
+		require => Exec['add-apt-repository ppa:chris-lea/node.js-legacy'],
 	}
 
 	package { 'npm':
 		ensure => present,
-		require => Exec['add-apt-repository ppa:chris-lea/node.js'],
+		require => Exec['add-apt-repository ppa:chris-lea/node.js-legacy'],
 	}
 }
 
